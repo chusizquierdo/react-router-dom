@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Link } from 'react-router-dom'
+import Prueba from './components/Prueba';
 
-function App() {
+function NavegacionAnidada() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Navegación Anidada</h1>
+      <ul>
+        <li>
+          <Link to="proyecto-1">Proyecto 1</Link>
+        </li>
+        <li>
+          <Link to="proyecto-2">Proyecto 2</Link>
+        </li>
+      </ul>
+      <section>
+        <Routes>
+          <Route path="proyecto-1" element={<h2>Proyecto 1</h2>}></Route>
+          <Route path="proyecto-2" element={<h2>Proyecto 2</h2>}></Route>
+        </Routes>
+      </section>
+
+
     </div>
   );
 }
 
+
+
+
+function App() {
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>
+            <Link to="/miscosas">Mis cosas</Link>
+          </li>
+          <li>
+            <Link to="/portafolio/">Portafolio</Link>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <Routes>
+          <Route exact path="/" element={<h1>Inicio</h1>}></Route>
+          <Route exact path="/miscosas" element={<Prueba />}></Route>
+          <Route path="/portafolio/*" element={<NavegacionAnidada />}></Route>
+        </Routes>
+      </section>
+    </div>
+  );
+}
+ 
 export default App;
