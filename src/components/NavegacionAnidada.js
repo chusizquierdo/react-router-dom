@@ -1,4 +1,5 @@
 import React from 'react';
+import Proyecto from './Proyecto';
 import {Link, Routes, Route} from 'react-router-dom'
 
 function NavegacionAnidada() {
@@ -11,12 +12,11 @@ function NavegacionAnidada() {
           </li>
           <li>
             <Link to="proyecto-2">Proyecto 2</Link>
-          </li>
+          </li>       
         </ul>
         <section>
           <Routes>
-            <Route path="proyecto-1" element={<h2>Proyecto 1</h2>}></Route>
-            <Route path="proyecto-2" element={<h2>Proyecto 2</h2>}></Route>
+            <Route path=":proyecto_id" element={<Proyecto />}></Route>
           </Routes>
         </section>
   
