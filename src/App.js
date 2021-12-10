@@ -1,8 +1,22 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import Prueba from './components/Prueba';
 import NavegacionAnidada from './components/NavegacionAnidada';
 
-function App() {
+
+function useQuery(){
+  return new URLSearchParams(useLocation().search)
+}
+
+
+
+function App() { 
+  const location=useLocation()
+  console.log({location})
+  const query=useQuery()
+  const login=query.get('login')
+  const idcall=query.get('idcall')
+  console.log(login)
+  console.log(idcall)
   return (
     <div>
       <nav>
